@@ -32,7 +32,7 @@
     height: 400px;
     background-color: orange;
     transition: top 0.5s ease-out;
-    z-index: 9999;
+    z-index: 9998;
     color: #2D8730;
     font-size: 14px;
     overflow: auto;
@@ -44,7 +44,19 @@
     .reveal .editor-container .console button {
       position: absolute;
       top: 5px;
-      right: 5px; }
+      right: 5px;
+      z-index: 9999;
+      background-color: #0078e7;
+      color: #fff;
+      font-size: 100%;
+      padding: 0.5em 1em;
+      border: 0;
+      border-radius: 2px;
+      box-sizing: border-box; }
+    .reveal .editor-container .console button:hover {
+      background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1)); }
+    .reveal .editor-container .console button:active {
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.2) inset; }
     .reveal .editor-container .console pre {
       font-family: Monaco, monospace;
       font-size: 18px;
