@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ES6 - The Great Parts!</title>
+    <meta name="description" content="An interactive presentation for features of ECMAscript 6">
+    <meta name="author" content="Curtis Schlak">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+    <link rel="stylesheet" href="css/zenburn.css">
+    <link rel="stylesheet" href="css/theme/presentation.css">
+    <script type="application/javascript;version=1.7" src="js/reveal.min.js"></script>
+    <script src="js/src-min-noconflict/ace.js"></script>
+    <script type="application/javascript;version=1.7" src="js/loader.js"></script>
+    <script type="application/javascript;version=1.7">System.import('js/presentation');</script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>ECMAscript 6</h1>
+          <h3>The Great Parts!</h3>
+          <p>
+            <small>
+              Created by
+              <a href="http://curtis.schlak.com" target="_blank">Curtis Schlak</a>
+              for the October meeting of the
+              <a href="http://houstonjs.com" target="_blank">HoustonJS</a>
+              group
+            </small>
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+          </p>
+        </section>
+        <section>
+          <h2>We will see...</h2>
+          <ul>
+            <li>classes</li>
+            <li>modules</li>
+            <li>lambdas</li>
+            <li>promises</li>
+            <li>proxies</li>
+            <li>destructuring</li>
+            <li>generators</li>
+            <li>template strings</li>
+            <li>symbols</li>
+          </ul>
+        </section>
+        <section>
+          <section>
+            <h1>Classes</h1>
+          </section>
+
+          <section>
+            <h3>What it used to be like</h3>
+            <div class="editor-container">
+              <div class="editor">
+function Parent (value) {
+  this.parentValue = value;
+}
+Parent.prototype.toString = function () {
+  return "PARENT: " + this.parentValue;
+};
+
+function Child (childValue, parentValue) {
+  Parent.call(this, parentValue);
+  this.childValue = childValue;
+}
+
+Child.prototype = new Parent();
+Child.prototype.toString = function () {
+  return "CHILD: " + this.childValue + ", "
+         + Parent.prototype.toString.call(this);
+};
+
+console.log(String(new Child('George W', 'George HW')));
+              </div>
+              <div class="console">
+                <button class="clear-console">Clear</button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
