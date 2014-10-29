@@ -1,14 +1,29 @@
+// $slide-basis: 256px;
+// $editor-text-size: 20px;
+$slide-basis: 200px;
+$editor-text-size: 16px;
+$slide-width: $slide-basis * 4;
+$slide-height: $slide-basis * 3;
+$editor-height: $slide-height - 80px;
+$console-diff: 100px;
+$console-height: $editor-height - $console-diff;
+
 .reveal {
+  .slides {
+    width: $slide-width;
+    height: $slide-height;
+  }
+
   .editor-container {
-    height: 520px;
+    height: $editor-height;
     overflow: hidden;
     position: relative;
 
     .editor {
       &.ace_editor {
-        // height: 690px;
-        height: 520px;
-        font: 18px Monaco;
+        // font: 18px Monaco;
+        height: $editor-height;
+        font: $editor-text-size Monaco;
         text-align: left;
       }
 
@@ -40,24 +55,20 @@
       }
     }
 
-    .console {
-      // width: 1024px;
-      width: 800px;
+    .console-container {
+      width: $slide-width;
       position: absolute;
-      top: 520px;
-      height: 400px;
-      background-color: orange;
+      top: $editor-height;
       transition: top .5s ease-out;
       z-index: 9998;
       color: #2D8730;
-      font-size: 14px;
       overflow: auto;
       background-color: #232323;
       padding: 10px;
       box-sizing: border-box;
 
       &.show {
-        top: 120px;
+        top: $console-diff;
       }
 
       button {
@@ -67,7 +78,7 @@
         z-index: 9999;
         background-color: #0078e7;
         color: #fff;
-        font-size: 100%;
+        font-size: $editor-text-size - 2;
         padding: .5em 1em;
         border: 0;
         border-radius: 2px;
@@ -81,10 +92,13 @@
       button:active {
         box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
       }
+    }
+    .console {
+      height: $console-height;
 
       pre {
         font-family: Monaco, monospace;
-        font-size: 18px;
+        font-size: $editor-text-size;
         padding: 8px 0;
         margin: 0;
         border-bottom: 1px solid #164116;

@@ -36,8 +36,8 @@
         <section>
           <h2>We will see...</h2>
           <ul>
-            <li>classes</li>
-            <li>modules</li>
+            <li><a href="#/classes">classes</a></li>
+            <li><a href="#/modules">modules</a></li>
             <li>lambdas</li>
             <li>promises</li>
             <li>proxies</li>
@@ -48,11 +48,10 @@
           </ul>
         </section>
         <section>
-          <section>
+          <section id="classes">
             <h1>Classes</h1>
           </section>
-
-          <section>
+          <section data-native="true">
             <h3>What it used to be like</h3>
             <div class="editor-container">
               <div class="editor">
@@ -60,7 +59,7 @@ function Parent (value) {
   this.parentValue = value;
 }
 Parent.prototype.toString = function () {
-  return "PARENT: " + this.parentValue;
+  return 'PARENT: ' + this.parentValue;
 };
 
 function Child (childValue, parentValue) {
@@ -70,16 +69,116 @@ function Child (childValue, parentValue) {
 
 Child.prototype = new Parent();
 Child.prototype.toString = function () {
-  return "CHILD: " + this.childValue + ", "
+  return 'CHILD: ' + this.childValue + ', '
          + Parent.prototype.toString.call(this);
 };
 
 console.log(String(new Child('George W', 'George HW')));
               </div>
-              <div class="console">
+              <div class="console-container">
                 <button class="clear-console">Clear</button>
+                <div class="console"></div>
               </div>
             </div>
+          </section>
+
+          <section>
+            <h3>Welcome class and extend!</h3>
+            <div class="editor-container">
+              <div class="editor">
+class Parent {
+  constructor (value) {
+    this.parentValue = value;
+  }
+  toString() {
+    return 'PARENT: ' + this.parentValue;
+  }
+}
+
+class Child extends Parent {
+  constructor(childValue, parentValue) {
+    super(parentValue);
+    this.childValue = childValue;
+  }
+  toString() {
+    return 'CHILD: ' + this.childValue + ', '
+           + super.toString();
+  }
+}
+
+console.log(String(new Child('George W', 'George HW')));
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3>It works even deeper...</h3>
+            <div class="editor-container">
+              <div class="editor">
+class Parent {
+  constructor (value) {
+    this.parentValue = value;
+  }
+  toString() {
+    return 'PARENT: ' + this.parentValue;
+  }
+}
+
+class Child extends Parent {
+  constructor(childValue, parentValue) {
+    super(parentValue);
+    this.childValue = childValue;
+  }
+  toString() {
+    return 'CHILD: ' + this.childValue + ', '
+           + super.toString();
+  }
+}
+
+class GrandChild extends Child {
+  constructor(grandchildValue, childValue, parentValue) {
+    super(childValue, parentValue);
+    this.grandchildValue = grandchildValue;
+  }
+  toString() {
+    return 'GRANDCHILD: ' + this.grandchildValue + ', '
+           + super.toString();
+  }
+}
+
+console.log(String(new GrandChild('Margaux', 'Mary', 'Ernest')));
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section id="modules">
+            <h1>Modules</h1>
+          </section>
+          <section>
+            <h3>It started with...</h3>
+            <pre><code data-trim>
+&lt;script src="js/MozCompat.js">&lt;/script>
+&lt;script src="js/themes.js">&lt;/script>
+&lt;script src="js/flash.js">&lt;/script>
+&lt;script src="js/Navigation.js">&lt;/script>
+&lt;script src="js/GTracking.js">&lt;/script>
+&lt;script src="js/Home.js">&lt;/script>
+&lt;script src="js/ieminwidth.js">&lt;/script>
+&lt;script src="js/slideshow.js">&lt;/script>
+&lt;script src="js/HomeTail.js">&lt;/script>
+            </code></pre>
+          </section>
+          <section>
+            
           </section>
         </section>
       </div>

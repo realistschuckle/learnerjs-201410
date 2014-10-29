@@ -1,10 +1,13 @@
+.reveal .slides {
+  width: 800px;
+  height: 600px; }
 .reveal .editor-container {
   height: 520px;
   overflow: hidden;
   position: relative; }
   .reveal .editor-container .editor.ace_editor {
     height: 520px;
-    font: 18px Monaco;
+    font: 16px Monaco;
     text-align: left; }
   .reveal .editor-container .editor .ace_gutter-layer {
     text-align: right; }
@@ -25,41 +28,40 @@
     cursor: pointer; }
   .reveal .editor-container .editor .ace_cursor {
     border-left: 2px solid; }
-  .reveal .editor-container .console {
+  .reveal .editor-container .console-container {
     width: 800px;
     position: absolute;
     top: 520px;
-    height: 400px;
-    background-color: orange;
     transition: top 0.5s ease-out;
     z-index: 9998;
     color: #2D8730;
-    font-size: 14px;
     overflow: auto;
     background-color: #232323;
     padding: 10px;
     box-sizing: border-box; }
-    .reveal .editor-container .console.show {
-      top: 120px; }
-    .reveal .editor-container .console button {
+    .reveal .editor-container .console-container.show {
+      top: 100px; }
+    .reveal .editor-container .console-container button {
       position: absolute;
       top: 5px;
       right: 5px;
       z-index: 9999;
       background-color: #0078e7;
       color: #fff;
-      font-size: 100%;
+      font-size: 14px;
       padding: 0.5em 1em;
       border: 0;
       border-radius: 2px;
       box-sizing: border-box; }
-    .reveal .editor-container .console button:hover {
+    .reveal .editor-container .console-container button:hover {
       background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1)); }
-    .reveal .editor-container .console button:active {
+    .reveal .editor-container .console-container button:active {
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.2) inset; }
+  .reveal .editor-container .console {
+    height: 420px; }
     .reveal .editor-container .console pre {
       font-family: Monaco, monospace;
-      font-size: 18px;
+      font-size: 16px;
       padding: 8px 0;
       margin: 0;
       border-bottom: 1px solid #164116;

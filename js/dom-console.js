@@ -74,7 +74,8 @@ export let cons = {
   error,
   log,
   logHTML,
-  install
+  install,
+  get elem() { return output; }
 };
 
 console.log = log;

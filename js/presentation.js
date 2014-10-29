@@ -1,12 +1,13 @@
 import factory from 'js/repl';
 import { cons } from 'js/dom-console';
 
-Reveal.initialize({
-  // height: 768,
-  // width: 1024,
+let slides = document.querySelector('.slides');
+let height = parseInt(window.getComputedStyle(slides, null).getPropertyValue('height'), 10);
+let width = parseInt(window.getComputedStyle(slides, null).getPropertyValue('width'), 10);
 
-  height: 600,
-  width: 800,
+Reveal.initialize({
+  height: height,
+  width: width,
 
   history: true,
   margin: 0,
@@ -18,16 +19,32 @@ Reveal.initialize({
   ]
 });
 
+Reveal.configure({
+  keyboard: {
+    27: function () {
+      if (cons.elem === null) {
+        Reveal.toggleOverview();
+      } else {
+        handlers.clear();
+      }
+    }
+  }
+});
+
+let currentSlide = null;
 Reveal.addEventListener('slidechanged', e => {
-  cons.install(document.querySelector('.present .console'));
+  currentSlide = e.currentSlide;
+  let consolio = currentSlide.querySelector('.editor-container > .console-container > .console');
+  cons.install(consolio);
 });
 
 let handlers = {
   run(content) {
-    let consolio = document.querySelector('.present .console');
-    cons.install(consolio);
-    consolio.classList.add('show');
-    let evaluator = factory(() => true);
+    if (!cons.elem) {
+      return;
+    }
+    cons.elem.parentNode.classList.add('show');
+    let evaluator = factory(() => currentSlide.getAttribute('data-native'));
     evaluator(content, e => {
       if (e) {
         cons.error(e);
@@ -36,12 +53,14 @@ let handlers = {
   },
 
   clear() {
-    document.querySelector('.present .console').classList.remove('show');
+    if (!cons.elem) {
+      return;
+    }
+    cons.elem.parentNode.classList.remove('show');
   }
 }
 
-let editors = Array.from(document.querySelectorAll('.editor'));
-for(let editor of editors) {
+for(let editor of Array.from(document.querySelectorAll('.editor'))) {
   editor = ace.edit(editor);
   editor.setTheme('ace/theme/twilight');
   editor.getSession().setMode("ace/mode/javascript");
@@ -58,3 +77,10 @@ for(let editor of editors) {
     }
   });
 }
+
+document.body.addEventListener('click', e => {
+  let target = e.target;
+  if (target.tagName.toLowerCase() === 'button' && target.className === 'clear-console') {
+    cons.clear();
+  }
+});
