@@ -1,6 +1,21 @@
 .reveal .slides {
   width: 800px;
   height: 600px; }
+.reveal pre code {
+  font-family: Monaco; }
+.reveal pre.code {
+  padding: 5px;
+  overflow: auto;
+  max-height: 400px;
+  word-wrap: normal;
+  font: 20px Monaco;
+  margin: auto;
+  border: 0px none;
+  vertical-align: baseline;
+  display: block;
+  padding: 0.5em;
+  background: #3F3F3F;
+  color: #DCDCDC; }
 .reveal .editor-container {
   height: 520px;
   overflow: hidden;

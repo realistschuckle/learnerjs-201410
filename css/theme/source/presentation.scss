@@ -14,6 +14,26 @@ $console-height: $editor-height - $console-diff;
     height: $slide-height;
   }
 
+  pre {
+    code {
+      font-family: Monaco;
+    }
+  }
+
+  pre.code {
+    padding: 5px;
+    overflow: auto;
+    max-height: 400px;
+    word-wrap: normal;
+    font: 20px Monaco;
+    margin: auto;
+    border: 0px none;
+    vertical-align: baseline;
+    display: block; padding: 0.5em;
+    background: #3F3F3F;
+    color: #DCDCDC;
+  }
+
   .editor-container {
     height: $editor-height;
     overflow: hidden;
@@ -21,7 +41,6 @@ $console-height: $editor-height - $console-diff;
 
     .editor {
       &.ace_editor {
-        // font: 18px Monaco;
         height: $editor-height;
         font: $editor-text-size Monaco;
         text-align: left;

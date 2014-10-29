@@ -178,7 +178,45 @@ console.log(String(new GrandChild('Margaux', 'Mary', 'Ernest')));
             </code></pre>
           </section>
           <section>
-            <h3>Then, Yahoo! moved it forward...</h3>
+            <h3>Then, YUI2 moved it forward</h3>
+            <pre><code data-trim>
+&lt;script src="yuiloader-beta-min.js">&lt;/script>
+&lt;script>
+  loader = new YAHOO.util.YUILoader();
+  loader.require('colorpicker', 'treeview');
+  loader.insert(function () {
+    new YAHOO.widget.ColorPicker('picker-div');
+    new YAHOO.widget.TreeView('tree-div');
+  });
+&lt;/script>
+            </code></pre>
+            <aside class="notes">
+              Emerged in 2007
+            </aside>
+          </section>
+          <section>
+            <h3>"Standards" emerged</h3>
+            <h4>managing dependencies between modules</h4>
+            <ul>
+              <li>CommonJS</li>
+              <li>Asynchronous Module Definition (AMD)</li>
+              <li>Dojo modules</li>
+              <li>YUI3 modules</li>
+            </ul>
+            <aside class="notes">
+              Emerged after 2009
+            </aside>
+          </section>
+          <section>
+            <h1>TC39 said, "meh"</h1>
+          </section>
+          <section>
+            <h3>Importing</h3>
+            <pre class="code">
+<span class="keyword">import</span> theDefault <span class="keyword">from</span> <span class="string">'module'</span>;
+<span class="keyword">import</span> * <span class="keyword">as</span> aNamespace <span class="keyword">from</span> <span class="string">'module'</span>;
+<span class="keyword">import</span> { namedExport } <span class="keyword">from</span> <span class="string">'module'</span>;
+<span class="keyword">import</span> { namedExport <span class="keyword">as</span> aliased } <span class="keyword">from</span> <span class="string">'module'</span>;</pre>
           </section>
         </section>
       </div>
