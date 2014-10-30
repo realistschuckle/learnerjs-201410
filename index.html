@@ -52,6 +52,10 @@
           </p>
         </section>
         <section>
+          <h2>You can follow along...</h2>
+          <p>http://curtis.schlak.com/learnerjs-201410</p>
+        </section>
+        <section>
           <h2>We will see...</h2>
           <ul>
             <li><a href="#/modules">modules</a></li>
@@ -310,9 +314,11 @@ thisSlide.addEventListener('click', function clicky () {
   setTimeout(function () {
 
     // TO USE HERE!
-    console.log(self === this, self === this);
+    console.log('self === this:', self === this);
+    console.log('self:', self);
+    console.log('this:', this);
 
-  }, 1000);
+  }, 0);
 });
               </div>
               <div class="console-container">
@@ -331,7 +337,7 @@ thisSlide.addEventListener('click', function clicky () {
 
   // The "this" in this lambda is the "this" of the
   // declaring context!
-  setTimeout(() => console.log(this), 1000);
+  setTimeout(() => console.log(this), 0);
 });
               </div>
               <div class="console-container">
