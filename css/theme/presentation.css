@@ -67,8 +67,11 @@
       padding: 0.5em 1em;
       border: 0;
       border-radius: 2px;
-      box-sizing: border-box; }
+      box-sizing: border-box;
+      opacity: 0.25;
+      transition: opacity 0.5s ease-out; }
     .reveal .editor-container .console-container button:hover {
+      opacity: 1;
       background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1)); }
     .reveal .editor-container .console-container button:active {
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.2) inset; }

@@ -43,7 +43,7 @@ let log = function (t) {
     for (let i = 0; i < t.length; i += 1) {
       a.push(coerce(t[i]));
     }
-    t = a.join('<br>&gt; ');
+    t = a.join(' ');
   } else {
     t = '';
   }

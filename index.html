@@ -40,8 +40,8 @@
             <li><a href="#/classes">classes</a></li>
             <li><a href="#/lambdas">lambdas</a></li>
             <li><a href="#/proxies">proxies</a></li>
-            <li>destructuring</li>
-            <li>generators</li>
+            <li><a href="#/destructuring">destructuring</a></li>
+            <li><a href="#/generators">generators</a></li>
             <li>template strings</li>
             <li>symbols</li>
           </ul>
@@ -290,7 +290,7 @@ thisSlide.addEventListener('click', function clicky () {
   setTimeout(function () {
 
     // TO USE HERE!
-    console.log(self);
+    console.log(self === this, self === this);
 
   }, 1000);
 });
@@ -331,7 +331,7 @@ thisSlide.addEventListener('click', function clicky () {
               <i>an object authorized to act<br>on behalf of another</i>
             </p>
           </section>
-          <section>
+          <section data-native="true">
             <h3>Example: Log all gets</h3>
             <div class="editor-container">
               <div class="editor">
@@ -379,6 +379,218 @@ p(p.firstName, p.age());
               <li>apply</li>
               <li>construct</li>
             </ul>
+          </section>
+        </section>
+        <section>
+          <section id="destructuring">
+            <h1>De<br>struc<br>turing</h1>
+          </section>
+          <section data-native="true">
+            <h3>Bind to object properties</h3>
+            <div class="editor-container">
+              <div class="editor">
+function kindOfMulti () {
+  return {
+    one: 1,
+    two: 'zwei',
+    three: 3.0
+  };
+}
+
+let { one: o, two: t, three: th } = kindOfMulti();
+
+console.log(o, t, th);
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section data-native="true">
+            <h3>Bind to arrays</h3>
+            <div class="editor-container">
+              <div class="editor">
+function kindOfMulti () {
+  return [ 'uno', 2.0, 3 ];
+}
+
+// ignore some arguments
+let [ ,, th ] = kindOfMulti();
+
+console.log(th);
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section data-native="true">
+            <h3>Also works for parameters</h3>
+            <div class="editor-container">
+              <div class="editor">
+function destructure ({ name: n, age: a}) {
+  console.log('I am', n, 'and I am', a, 'years old!');
+}
+
+var person = {
+  name: 'Virginia',
+  age: 8
+};
+
+destructure(person);
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section data-native="true">
+            <h3>Mix and match</h3>
+            <div class="editor-container">
+              <div class="editor">
+function destructure () {
+  return [
+    0,
+    { first: 1, second: 2, ignored: 'always' },
+    [ 3, 4, 5 ]
+  ]
+}
+
+let [a, { first: b, second: c }, [ d, e, f ]] = destructure();
+
+console.log(a, b, c, d, e, f)
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Restructuring?</h3>
+            <p>
+              That's kind of a joke. The <code>arguments</code> variable has
+              always been a hacky way of working with variable arguments. It's
+              not even a proper array.
+            </p>
+            <p>
+              Now, we have the ... operator to bind remaining arguments!
+            </p>
+          </section>
+          <section data-native="true">
+            <h3>The ...rest of the story</h3>
+            <div class="editor-container">
+              <div class="editor">
+function restParameter (i, j, ...rest) {
+  console.log(i + j);
+  console.log(Array.isArray(rest), rest);
+}
+
+restParameter(3, .14, 1, 2, 4, 8, 16);
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section id="generators">
+            <h1>Generate oars</h1>
+          </section>
+          <section>
+            <h3>In python</h3>
+            <div class="editor-container">
+              <div class="editor" data-format="python">
+def firstn(n):
+  num = 0
+  while num < n:
+    yield num
+    num += 1
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>In C#</h3>
+            <div class="editor-container">
+              <div class="editor" data-format="csharp">
+class GeneratorDude
+{
+  public IEnumerable&lt;int&gt; FirstN(int n)
+  {
+    int i = 0;
+    while (i < n)
+    {
+      yield return i;
+      i += 1;
+    }
+  }
+}
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section data-native="true">
+            <h3>In ECMAscript</h3>
+            <div class="editor-container">
+              <div class="editor">
+function* firstn(n) {
+  let i = 0;
+  while (i < n) {
+    yield i;
+    i += 1;
+  }
+}
+
+for (var i of firstn(5)) {
+  console.log(i);
+}
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section data-native="true">
+            <h3>Generators using generators</h3>
+            <div class="editor-container">
+              <div class="editor">
+function* beatles() {
+  let names = [ 'John', 'Paul', 'George', 'Ringo' ];
+  for (let name of names) {
+    yield name;
+  }
+}
+
+function* dudes() {
+  let names = [ 'Jackie', 'Tito', 'Jermaine', 'Maron', 'Michael' ];
+  for (let name of names) {
+    yield name;
+  }
+  yield* beatles();
+}
+
+for (var name of dudes()) {
+  console.log(name);
+}
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
           </section>
         </section>
       </div>

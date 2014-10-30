@@ -70,9 +70,13 @@ let handlers = {
 }
 
 for(let editor of Array.from(document.querySelectorAll('.editor'))) {
+  let language = 'javascript';
+  if (editor.getAttribute('data-format')) {
+    language = editor.getAttribute('data-format');
+  }
   editor = ace.edit(editor);
   editor.setTheme('ace/theme/twilight');
-  editor.getSession().setMode("ace/mode/javascript");
+  editor.getSession().setMode('ace/mode/' + language);
   editor.setValue(editor.getValue().trim() + '\n');
   editor.gotoLine(editor.session.getLength());
   editor.getSession().setTabSize(2);
