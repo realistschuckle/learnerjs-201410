@@ -6,6 +6,8 @@ function coerce(val) {
   if (val.nodeType) {
     val = val.outerHTML;
     val = val.substring(0, val.indexOf('>') + 1).replace(/</, '&lt;');
+  } else if (val === window) {
+    val = "[Window object]";
   } else if (val === Number.POSITIVE_INFINITY) {
     val = '<i>positive infinity</i>';
   } else if(val === Number.NEGATIVE_INFINITY) {
