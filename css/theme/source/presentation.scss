@@ -133,3 +133,21 @@ $console-height: $editor-height - $console-diff;
     }
   }
 }
+
+#module-name {
+  font-size: 1.25em;
+  font-family: 'Quicksand';
+  width: $slide-width - 8;
+}
+
+#module-creator {
+  .editor-container {
+    height: $slide-height - 120px;
+
+    .editor {
+      &.ace_editor {
+        height: $slide-height - 120px;
+      }
+    }
+  }
+}

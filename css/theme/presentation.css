@@ -86,3 +86,13 @@
       box-shadow: none; }
       .reveal .editor-container .console pre.error {
         color: red; }
+
+#module-name {
+  font-size: 1.25em;
+  font-family: 'Quicksand';
+  width: 792px; }
+
+#module-creator .editor-container {
+  height: 480px; }
+  #module-creator .editor-container .editor.ace_editor {
+    height: 480px; }

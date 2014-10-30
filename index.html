@@ -30,15 +30,15 @@
             </small>
           </p>
           <p>
-            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/css/ccbyncsa.png" /></a>
           </p>
         </section>
         <section>
           <h2>We will see...</h2>
           <ul>
-            <li><a href="#/classes">classes</a></li>
             <li><a href="#/modules">modules</a></li>
-            <li>lambdas</li>
+            <li><a href="#/classes">classes</a></li>
+            <li><a href="#/lambdas">lambdas</a></li>
             <li>promises</li>
             <li>proxies</li>
             <li>destructuring</li>
@@ -46,118 +46,6 @@
             <li>template strings</li>
             <li>symbols</li>
           </ul>
-        </section>
-        <section>
-          <section id="classes">
-            <h1>Classes</h1>
-          </section>
-          <section data-native="true">
-            <h3>What it used to be like</h3>
-            <div class="editor-container">
-              <div class="editor">
-function Parent (value) {
-  this.parentValue = value;
-}
-Parent.prototype.toString = function () {
-  return 'PARENT: ' + this.parentValue;
-};
-
-function Child (childValue, parentValue) {
-  Parent.call(this, parentValue);
-  this.childValue = childValue;
-}
-
-Child.prototype = new Parent();
-Child.prototype.toString = function () {
-  return 'CHILD: ' + this.childValue + ', '
-         + Parent.prototype.toString.call(this);
-};
-
-console.log(String(new Child('George W', 'George HW')));
-              </div>
-              <div class="console-container">
-                <button class="clear-console">Clear</button>
-                <div class="console"></div>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Welcome class and extend!</h3>
-            <div class="editor-container">
-              <div class="editor">
-class Parent {
-  constructor (value) {
-    this.parentValue = value;
-  }
-  toString() {
-    return 'PARENT: ' + this.parentValue;
-  }
-}
-
-class Child extends Parent {
-  constructor(childValue, parentValue) {
-    super(parentValue);
-    this.childValue = childValue;
-  }
-  toString() {
-    return 'CHILD: ' + this.childValue + ', '
-           + super.toString();
-  }
-}
-
-console.log(String(new Child('George W', 'George HW')));
-              </div>
-              <div class="console-container">
-                <button class="clear-console">Clear</button>
-                <div class="console"></div>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h3>It works even deeper...</h3>
-            <div class="editor-container">
-              <div class="editor">
-class Parent {
-  constructor (value) {
-    this.parentValue = value;
-  }
-  toString() {
-    return 'PARENT: ' + this.parentValue;
-  }
-}
-
-class Child extends Parent {
-  constructor(childValue, parentValue) {
-    super(parentValue);
-    this.childValue = childValue;
-  }
-  toString() {
-    return 'CHILD: ' + this.childValue + ', '
-           + super.toString();
-  }
-}
-
-class GrandChild extends Child {
-  constructor(grandchildValue, childValue, parentValue) {
-    super(childValue, parentValue);
-    this.grandchildValue = grandchildValue;
-  }
-  toString() {
-    return 'GRANDCHILD: ' + this.grandchildValue + ', '
-           + super.toString();
-  }
-}
-
-console.log(String(new GrandChild('Margaux', 'Mary', 'Ernest')));
-              </div>
-              <div class="console-container">
-                <button class="clear-console">Clear</button>
-                <div class="console"></div>
-              </div>
-            </div>
-          </section>
         </section>
         <section>
           <section id="modules">
@@ -217,6 +105,152 @@ console.log(String(new GrandChild('Margaux', 'Mary', 'Ernest')));
 <span class="keyword">import</span> * <span class="keyword">as</span> aNamespace <span class="keyword">from</span> <span class="string">'module'</span>;
 <span class="keyword">import</span> { namedExport } <span class="keyword">from</span> <span class="string">'module'</span>;
 <span class="keyword">import</span> { namedExport <span class="keyword">as</span> aliased } <span class="keyword">from</span> <span class="string">'module'</span>;</pre>
+          </section>
+          <section>
+            <h3>Exporting</h3>
+            <pre class="code">
+<span class="keyword">export var</span> v;
+<span class="keyword">export default function</span> f () {};
+<span class="keyword">export default function</span> () {};
+<span class="keyword">export default</span> <span class="number">42</span>;
+<span class="keyword">export</span> { namedExport };
+<span class="keyword">export</span> { namedExport <span class="keyword">as</span> aliased };
+<span class="keyword">export</span> { namedExport } <span class="keyword">from</span> 'anotherModule';</pre>
+          </section>
+          <section id="module-creator">
+            <h3><input type="text" id="module-name" placeholder="«module name»"></h3>
+            <div class="editor-container">
+              <div class="editor"></div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section id="module-evaluator">
+            <h3>Use the module,now.</h3>
+            <div class="editor-container">
+              <div class="editor"></div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section id="classes">
+            <h1>Classes</h1>
+          </section>
+          <section data-native="true">
+            <h3>What it used to be like</h3>
+            <div class="editor-container">
+              <div class="editor">
+function Parent (value) {
+  this.parentValue = value;
+}
+Parent.prototype.toString = function () {
+  return 'PARENT: ' + this.parentValue;
+};
+
+function Child (childValue, parentValue) {
+  Parent.call(this, parentValue);
+  this.childValue = childValue;
+}
+
+Child.prototype = new Parent();
+Child.prototype.toString = function () {
+  return 'CHILD: ' + this.childValue + ', '
+         + Parent.prototype.toString.call(this);
+};
+
+console.log(String(new Child('George W', 'George HW')));
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Welcome class and extend!</h3>
+            <div class="editor-container">
+              <div class="editor">
+class Parent {
+  constructor (value) {
+    this.parentValue = value;
+  }
+  toString() {
+    return 'PARENT: ' + this.parentValue;
+  }
+}
+
+class Child extends Parent {
+  constructor(childValue, parentValue) {
+    super(parentValue);
+    this.childValue = childValue;
+  }
+  toString() {
+    return 'CHILD: ' + this.childValue + ', '
+           + super.toString();
+  }
+}
+
+console.log(String(new Child('George W', 'George HW')));
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>It works even deeper...</h3>
+            <div class="editor-container">
+              <div class="editor">
+class Parent {
+  constructor (value) {
+    this.parentValue = value;
+  }
+  toString() {
+    return 'PARENT: ' + this.parentValue;
+  }
+}
+
+class Child extends Parent {
+  constructor(childValue, parentValue) {
+    super(parentValue);
+    this.childValue = childValue;
+  }
+  toString() {
+    return 'CHILD: ' + this.childValue + ', '
+           + super.toString();
+  }
+}
+
+class GrandChild extends Child {
+  constructor(grandchildValue, childValue, parentValue) {
+    super(childValue, parentValue);
+    this.grandchildValue = grandchildValue;
+  }
+  toString() {
+    return 'GRANDCHILD: ' + this.grandchildValue + ', '
+           + super.toString();
+  }
+}
+
+console.log(String(new GrandChild('Margaux', 'Mary', 'Ernest')));
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section id="lambdas">
+            <h1>Lambdas</h1>
           </section>
         </section>
       </div>

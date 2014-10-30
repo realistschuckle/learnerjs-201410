@@ -20,7 +20,7 @@ function traceurEval (content, cb) {
     tracuerOptions: traceur.options
   };
   traceur.System.module(content, options)
-    .then(() => cb())
+    .then(m => cb(null, m))
     .catch(e => cb(e));
 }
 

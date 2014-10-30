@@ -43,11 +43,20 @@ let handlers = {
     if (!cons.elem) {
       return;
     }
+    if (currentSlide.id === 'module-evaluator') {
+      content = "var System = traceur.System;\n" + content;
+    }
     cons.elem.parentNode.classList.add('show');
     let evaluator = factory(() => currentSlide.getAttribute('data-native'));
-    evaluator(content, e => {
+    evaluator(content, (e, m) => {
       if (e) {
         cons.error(e);
+      }
+      if (currentSlide.id === 'module-creator') {
+        let name = document.getElementById('module-name').value;
+        traceur.System.register(name, [], function () {
+          return m;
+        });
       }
     });
   },
