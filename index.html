@@ -270,6 +270,39 @@ console.log(String(new GrandChild('Margaux', 'Mary', 'Ernest')));
               </div>
             </div>
           </section>
+          <section>
+            <h3>Warning: still prototypal</h3>
+            <div class="editor-container">
+              <div class="editor">
+class Parent {
+  constructor (value) {
+    this.value = value;
+  }
+  toString() {
+    return 'PARENT: ' + this.value;
+  }
+}
+
+class Child extends Parent {
+  constructor(childValue, parentValue) {
+    super(parentValue);
+    this.value = childValue;
+  }
+  toString() {
+    return 'CHILD: ' + this.value + ', '
+           + super.toString();
+  }
+}
+
+var child = new Child('Mira S', 'Paul S');
+console.log(String(child));
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
         </section>
         <section>
           <section id="lambdas">
@@ -671,6 +704,7 @@ function replace(str, ...parts) {
 
 let one = 1;
 let two = 2;
+
 replace`one ${one} two ${two}`
               </div>
               <div class="console-container">
