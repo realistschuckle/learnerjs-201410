@@ -9,10 +9,28 @@
     <link rel="stylesheet" href="css/theme/sky.css" id="theme">
     <link rel="stylesheet" href="css/zenburn.css">
     <link rel="stylesheet" href="css/theme/presentation.css">
-    <script type="application/javascript;version=1.7" src="js/reveal.min.js"></script>
+    <script src="js/reveal.min.js"></script>
     <script src="js/src-min-noconflict/ace.js"></script>
     <script type="application/javascript;version=1.7" src="js/loader.js"></script>
     <script type="application/javascript;version=1.7">System.import('js/presentation');</script>
+    <script>
+      if(typeof System === 'undefined') {
+        var elem = document.createElement('script');
+        elem.src = 'js/loader.js';
+        document.head.appendChild(elem);
+
+        function initializePresentation () {
+          if (typeof System === 'undefined') {
+            setTimeout(initializePresentation, 1000);
+          }
+          elem = document.createElement('script');
+          elem.innerHTML = 'System.import("js/presentation");';
+          document.head.appendChild(elem);
+        }
+
+        setTimeout(initializePresentation, 1000);
+      }
+    </script>
   </head>
   <body>
     <div class="reveal">
