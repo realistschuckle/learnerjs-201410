@@ -55,7 +55,7 @@
     padding: 10px;
     box-sizing: border-box; }
     .reveal .editor-container .console-container.show {
-      top: 100px; }
+      top: 120px; }
     .reveal .editor-container .console-container button {
       position: absolute;
       top: 5px;
@@ -73,7 +73,8 @@
     .reveal .editor-container .console-container button:active {
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.2) inset; }
   .reveal .editor-container .console {
-    height: 420px; }
+    height: 400px;
+    overflow: auto; }
     .reveal .editor-container .console pre {
       font-family: Monaco, monospace;
       font-size: 16px;
@@ -82,7 +83,7 @@
       border-bottom: 1px solid #164116;
       white-space: pre;
       word-wrap: inherit;
-      width: 100%;
+      width: auto;
       box-shadow: none; }
       .reveal .editor-container .console pre.error {
         color: red; }
@@ -96,3 +97,6 @@
   height: 480px; }
   #module-creator .editor-container .editor.ace_editor {
     height: 480px; }
+
+.line-through {
+  text-decoration: line-through; }

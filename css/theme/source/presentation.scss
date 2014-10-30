@@ -5,7 +5,7 @@ $editor-text-size: 16px;
 $slide-width: $slide-basis * 4;
 $slide-height: $slide-basis * 3;
 $editor-height: $slide-height - 80px;
-$console-diff: 100px;
+$console-diff: 120px;
 $console-height: $editor-height - $console-diff;
 
 .reveal {
@@ -114,6 +114,7 @@ $console-height: $editor-height - $console-diff;
     }
     .console {
       height: $console-height;
+      overflow: auto;
 
       pre {
         font-family: Monaco, monospace;
@@ -123,7 +124,7 @@ $console-height: $editor-height - $console-diff;
         border-bottom: 1px solid #164116;
         white-space: pre;
         word-wrap: inherit;
-        width: 100%;
+        width: auto;
         box-shadow: none;
 
         &.error {
@@ -150,4 +151,8 @@ $console-height: $editor-height - $console-diff;
       }
     }
   }
+}
+
+.line-through {
+  text-decoration: line-through;
 }

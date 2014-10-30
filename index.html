@@ -39,8 +39,7 @@
             <li><a href="#/modules">modules</a></li>
             <li><a href="#/classes">classes</a></li>
             <li><a href="#/lambdas">lambdas</a></li>
-            <li>promises</li>
-            <li>proxies</li>
+            <li><a href="#/proxies">proxies</a></li>
             <li>destructuring</li>
             <li>generators</li>
             <li>template strings</li>
@@ -53,30 +52,30 @@
           </section>
           <section>
             <h3>It started with...</h3>
-            <pre><code data-trim>
-&lt;script src="js/MozCompat.js">&lt;/script>
-&lt;script src="js/themes.js">&lt;/script>
-&lt;script src="js/flash.js">&lt;/script>
-&lt;script src="js/Navigation.js">&lt;/script>
-&lt;script src="js/GTracking.js">&lt;/script>
-&lt;script src="js/Home.js">&lt;/script>
-&lt;script src="js/ieminwidth.js">&lt;/script>
-&lt;script src="js/slideshow.js">&lt;/script>
-&lt;script src="js/HomeTail.js">&lt;/script>
+            <pre><code data-trim class="html">
+&lt;script src="js/MozCompat.js"&gt;&lt;/script&gt;
+&lt;script src="js/themes.js"&gt;&lt;/script&gt;
+&lt;script src="js/flash.js"&gt;&lt;/script&gt;
+&lt;script src="js/Navigation.js"&gt;&lt;/script&gt;
+&lt;script src="js/GTracking.js"&gt;&lt;/script&gt;
+&lt;script src="js/Home.js"&gt;&lt;/script&gt;
+&lt;script src="js/ieminwidth.js"&gt;&lt;/script&gt;
+&lt;script src="js/slideshow.js"&gt;&lt;/script&gt;
+&lt;script src="js/HomeTail.js"&gt;&lt;/script&gt;
             </code></pre>
           </section>
           <section>
             <h3>Then, YUI2 moved it forward</h3>
-            <pre><code data-trim>
-&lt;script src="yuiloader-beta-min.js">&lt;/script>
-&lt;script>
+            <pre><code data-trim class="html">
+&lt;script src="yuiloader-beta-min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
   loader = new YAHOO.util.YUILoader();
   loader.require('colorpicker', 'treeview');
   loader.insert(function () {
     new YAHOO.widget.ColorPicker('picker-div');
     new YAHOO.widget.TreeView('tree-div');
   });
-&lt;/script>
+&lt;/script&gt;
             </code></pre>
             <aside class="notes">
               Emerged in 2007
@@ -251,6 +250,135 @@ console.log(String(new GrandChild('Margaux', 'Mary', 'Ernest')));
         <section>
           <section id="lambdas">
             <h1>Lambdas</h1>
+            <h3>We call them<br>arrow functions</h3>
+          </section>
+          <section data-native="true">
+            <h3>A lot like functions</h3>
+            <div class="editor-container">
+              <div class="editor">
+function fn (n) {
+  return 1 + n;
+}
+
+let lambda = n => 1 + n;
+
+console.log(fn(3), lambda(3));
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>So, what's the<br>difference?</h2>
+            <p>
+              Besides being all easier to type and stuff?
+            </p>
+          </section>
+          <section data-native="true" id="this-as-self">
+            <h3>this. Literally.</h3>
+            <div class="editor-container">
+              <div class="editor">
+let thisSlide = document.getElementById('this-as-self');
+thisSlide.addEventListener('click', function clicky () {
+
+  // SAVE HERE!
+  var self = this;
+
+  thisSlide.removeEventListener('click', clicky);
+  setTimeout(function () {
+
+    // TO USE HERE!
+    console.log(self);
+
+  }, 1000);
+});
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section data-native="true" id="lambda-has-no-this">
+            <h3>Arrow functions have no this.</h3>
+            <div class="editor-container">
+              <div class="editor">
+let thisSlide = document.getElementById('lambda-has-no-this');
+thisSlide.addEventListener('click', function clicky () {
+  thisSlide.removeEventListener('click', clicky);
+
+  // The "this" in this lambda is the "this" of the
+  // declaring context!
+  setTimeout(() => console.log(this), 1000);
+});
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section id="proxies">
+            <h1>Proxies</h1>
+          </section>
+          <section>
+            <p>
+              <i class="line-through">a person</i>
+              <i>an object authorized to act<br>on behalf of another</i>
+            </p>
+          </section>
+          <section>
+            <h3>Example: Log all gets</h3>
+            <div class="editor-container">
+              <div class="editor">
+let target = function targetFn () {};
+target.firstName = 'Curtis';
+target.age = function () {
+  return Number.POSITIVE_INFINITY;
+};
+
+let handler = {
+  get(target, name) {
+    console.log('calling', name, 'on', target.name);
+    return target[name];
+  },
+  apply(t) {
+    console.log('Invoking the object!!!');
+    return t;
+  }
+};
+
+let p = new Proxy(target, handler);
+p(p.firstName, p.age());
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Things to intercept</h3>
+            <ul>
+              <li>get</li>
+              <li>set</li>
+              <li>deleteProperty</li>
+              <li>enumerate</li>
+              <li>ownKeys</li>
+              <li>has</li>
+              <li>defineProperty</li>
+              <li>getOwnPropertyDescriptor</li>
+              <li>getPrototypeOf</li>
+              <li>setPrototypeOf</li>
+              <li>isExtensible</li>
+              <li>preventExtensions</li>
+              <li>apply</li>
+              <li>construct</li>
+            </ul>
           </section>
         </section>
       </div>
