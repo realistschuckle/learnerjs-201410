@@ -181,7 +181,8 @@ Child.prototype.toString = function () {
          + Parent.prototype.toString.call(this);
 };
 
-console.log(String(new Child('George W', 'George HW')));
+var child = new Child('Kate H', 'Goldie H')
+console.log(String(child));
               </div>
               <div class="console-container">
                 <button class="clear-console">Clear</button>
@@ -213,7 +214,8 @@ class Child extends Parent {
   }
 }
 
-console.log(String(new Child('George W', 'George HW')));
+var child = new Child('George W', 'George HW');
+console.log(String(child));
               </div>
               <div class="console-container">
                 <button class="clear-console">Clear</button>
