@@ -42,8 +42,8 @@
             <li><a href="#/proxies">proxies</a></li>
             <li><a href="#/destructuring">destructuring</a></li>
             <li><a href="#/generators">generators</a></li>
-            <li>template strings</li>
-            <li>symbols</li>
+            <li><a href="#/templates">template strings</a></li>
+            <li><a href="#/symbols">symbols</a></li>
           </ul>
         </section>
         <section>
@@ -585,6 +585,130 @@ function* dudes() {
 for (var name of dudes()) {
   console.log(name);
 }
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section id="templates">
+            <h1>Templates</h1>
+          </section>
+          <section data-native="true">
+            <h3>Supports multiple lines</h3>
+            <div class="editor-container">
+              <div class="editor">
+let multiline = `line one
+line two
+line three`;
+
+console.log(multiline);
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section data-native="true">
+            <h3>Interpolation, too!</h3>
+            <div class="editor-container">
+              <div class="editor">
+function replace(replacement, another) {
+  return `static line
+here's a ${replacement}
+and ${another}
+and 2 + 3 = ${2 + 3}!`;
+}
+
+console.log(replace('monkey', 'cheese'));
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h1>Lovely!</h1>
+          </section>
+          <section data-native="true">
+            <h3>I don't know what this is</h3>
+            <div class="editor-container">
+              <div class="editor">
+function replace(str, ...parts) {
+  console.log(str, parts);
+}
+
+let one = 1;
+let two = 2;
+replace`one ${one} two ${two}`
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section id="symbols">
+            <h1>Symbols</h1>
+          </section>
+          <section>
+            <p>
+              A symbol is a unique and immutable data type. You can use it as an
+              identifier for object properties.
+            </p>
+            <p>&nbsp;</p>
+            <p>
+              LiSP and Ruby programmers will get this.
+            </p>
+          </section>
+          <section>
+            <h3>Without symbols</h3>
+            <div class="editor-container">
+              <div class="editor">
+export class Person {
+  constructor(name) {
+    this._name = name;
+  }
+  get name() {
+    return this._name;
+  }
+}
+
+let person = new Person('Talachia');
+console.log(person.name);
+console.log(Object.keys(person));
+              </div>
+              <div class="console-container">
+                <button class="clear-console">Clear</button>
+                <div class="console"></div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>With symbols</h3>
+            <div class="editor-container">
+              <div class="editor">
+let nameProp = Symbol('name');
+
+export class Person {
+  constructor(name) {
+    this[nameProp] = name;
+  }
+  get name() {
+    return this[nameProp];
+  }
+}
+
+let person = new Person('Megan');
+console.log(person.name);
+console.log(Object.keys(person));
               </div>
               <div class="console-container">
                 <button class="clear-console">Clear</button>
