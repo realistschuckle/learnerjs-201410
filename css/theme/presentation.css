@@ -2,13 +2,13 @@
   width: 800px;
   height: 600px; }
 .reveal pre code {
-  font-family: Monaco; }
+  font-family: Consolas, Monaco; }
 .reveal pre.code {
   padding: 5px;
   overflow: auto;
   max-height: 400px;
   word-wrap: normal;
-  font: 20px Monaco;
+  font: 20px Consolas, Monaco;
   margin: auto;
   border: 0px none;
   vertical-align: baseline;
@@ -22,7 +22,7 @@
   position: relative; }
   .reveal .editor-container .editor.ace_editor {
     height: 520px;
-    font: 16px Monaco;
+    font: 16px Consolas, Monaco;
     text-align: left; }
   .reveal .editor-container .editor .ace_gutter-layer {
     text-align: right; }
@@ -79,7 +79,7 @@
     height: 400px;
     overflow: auto; }
     .reveal .editor-container .console pre {
-      font-family: Monaco, monospace;
+      font-family: Consolas, Monaco, monospace;
       font-size: 16px;
       padding: 8px 0;
       margin: 0;
